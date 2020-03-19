@@ -1,6 +1,23 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <unistd.h>
+
 using namespace sf;
 int ground = 500;
+
+class START
+{
+public:
+    START() {
+        sf::Font font;
+        if (!font.loadFromFile("/Users/igorbacurin/CLionProjects/graph/fonts/ariel.ttf"));
+        sf:Text text;
+        text.setFont(font);
+        text.setString("HelloWorld");
+        text.setCharacterSize(25);
+        text.setFillColor(sf::Color::Black);
+    }
+};
 
 class PLAYER { /* создаем класс PLAYER( нам нужно чтобы движения персонажа осуществлялись под действием  гравитации) */
 
@@ -46,28 +63,35 @@ public:
     }
 };
 
-int main()
-{
-    RenderWindow window(VideoMode(600, 600), "SFMLworks"); // создаем окно 600 на 600 с именем SFMLworks */
+    int main()
+    {
 
+
+    RenderWindow window(VideoMode(800, 600), "FangGame"); // создаем окно 600 на 600 с именем SFMLworks */
+    if (window.isOpen())
+    {
+        std::cout << "Loaded" << std::endl;
+    } else{
+        std::cout << "Window error!" << std::endl;
+    }
                                                                                               Texture t;
     t.loadFromFile("/Users/igorbacurin/CLionProjects/graph/images/fang.png"); // загружаем картинку
     float currentFrame = 0;
 
     PLAYER p(t); // загружаем текстуру
 
+
     Clock clock; /* засекаем время с последнего тика( чтобы привязка персонажа была ко времени, а не к мощности процессора) */
 
-    while (window.isOpen())
-    {
+
+    while (window.isOpen()) {
         float time = clock.getElapsedTime().asMicroseconds(); /* создаем переменную время, getElapsedTime() - дать прошедшее время( возьмем  его в микросекундах) */
 
         clock.restart(); // перезагружает часы
         time = time / 800; //здесь происходит регулировка скорости движения персонажа
 
         Event event;
-        while (window.pollEvent(event))
-        {
+        while (window.pollEvent(event)) {
 
             if (event.type == Event::Closed)
                 window.close(); // обрабатываем событие закрытия окна
@@ -82,26 +106,32 @@ int main()
             p.dx = 0.1; // при нажатии направо- ускоряемся на 0.1
             ground = 500;
         }
-        if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша вправо нажата и клавиша пробел
+        if (Keyboard::isKeyPressed(Keyboard::Down) &&
+            Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша вправо нажата и клавиша пробел
         {
             p.dz = 0.1;
             ground = 525;
         }
-        if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша влево нажата и клавиша пробел
+        if (Keyboard::isKeyPressed(Keyboard::Down) &&
+            Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша влево нажата и клавиша пробел
         {
             p.dz = -0.1;
             ground = 525;
         }
         if (Keyboard::isKeyPressed(Keyboard::Up)) // вверх
         {
-            if (p.onGround) { p.dy = -0.5; p.onGround = false; } // если мы на земле, то только тогда можем осуществить прыжок
+            if (p.onGround) {
+                p.dy = -0.5;
+                p.onGround = false;
+            } // если мы на земле, то только тогда можем осуществить прыжок
             ground = 500;
         }
 
         p.update(time); // загружаем время
-        window.clear(Color::White); // очищаем экран
 
-        window.draw(p.sprite); // рисуем спрайт
+
+        window.clear(Color::White); // очищаем экран
+        window.draw(p.sprite);// рисуем спрайт
         window.display(); // выводим на дисплей
     }
     return 0;
