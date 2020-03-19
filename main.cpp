@@ -75,23 +75,27 @@ int main()
         if (Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша нажата и клавиша налево
         {
             p.dx = -0.1; // при нажатии налево- ускоряемся на -0.1
+            ground = 500;
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша нажата и клавиша направо
         {
             p.dx = 0.1; // при нажатии направо- ускоряемся на 0.1
-
+            ground = 500;
         }
         if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша вправо нажата и клавиша пробел
         {
             p.dz = 0.1;
+            ground = 525;
         }
         if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша влево нажата и клавиша пробел
         {
             p.dz = -0.1;
+            ground = 525;
         }
         if (Keyboard::isKeyPressed(Keyboard::Up)) // вверх
         {
             if (p.onGround) { p.dy = -0.5; p.onGround = false; } // если мы на земле, то только тогда можем осуществить прыжок
+            ground = 500;
         }
 
         p.update(time); // загружаем время
