@@ -22,18 +22,20 @@ public:
 class PLAYER { /* создаем класс PLAYER( нам нужно чтобы движения персонажа осуществлялись под действием  гравитации) */
 
 public:
-    float dx, dy, dz; // скорость
+    float dx, dy, dz, gun; // скорость
     FloatRect rect; //  здесь rect(x, y, widht, height)
     bool onGround; /*  onGround- переменная, которая показывает, находится ли персонаж на земле */
     Sprite sprite; // сюда будем загружать картинку
     float currentFrame; //  текущий кадр для анимации
+    bool life, isMove,isSelect; // добавили переменные состояния движения и выбора объекта
 
     PLAYER(Texture &image)
     {
+        life = true; isMove = false; isSelect = false;
         sprite.setTexture(image); // в конструктор класса загружаем картинку
         rect = FloatRect(0, 0, 40, 50); /* указываем первоначальные координаты x=0, y=0, ширина-40, высота-50 */
 
-        dx = dy = dz = 0;
+        dx = dy = dz = gun = 0;
         currentFrame = 0;
     }
 
@@ -41,6 +43,7 @@ public:
     {
         rect.left += dx*time; // rect.left-есть координата х, перемещаем ее на dx*time
         rect.left += dz*time; // dz переменная
+        rect.left += gun*time; // gun переменная
 
         if (!onGround) dy = dy + 0.0005*time; /* если мы не на земле, то падаем с ускорением ( ускорение -0.005 умножаем на время получаем скорость) */
         rect.top += dy*time; // rect.top - есть координата у
@@ -51,23 +54,30 @@ public:
 
         currentFrame += 0.005*time; // скорость анимации
         if (currentFrame > 6) currentFrame -= 6; // всего у нас 6 кадров
-        if (dx > 0) sprite.setTextureRect(IntRect(40 * int(currentFrame), 244, 40, 50)); /* меняем первую координату, то есть рисунок текстуры сдвигается каждый раз на 40( при движении направо- правая анимация */
-        if (dx < 0) sprite.setTextureRect(IntRect(40 * int(currentFrame) + 40, 244, -40, 50)); // при движении налево- зеркальная
+        if (dx > 0) sprite.setTextureRect(IntRect(40 * int(currentFrame), 244, 40, 50)); /*  Бег (Вправо) ?? меняем первую координату, то есть рисунок текстуры сдвигается каждый раз на 40( при движении направо- правая анимация */
+        if (dx < 0) sprite.setTextureRect(IntRect(40 * int(currentFrame) + 40, 244, -40, 50)); // Бег (Влево) ?? при движении налево- зеркальная
         if (currentFrame > 4) currentFrame -= 4; // всего у нас 4 кадра
-        if (dz > 0) sprite.setTextureRect(IntRect(36 * int(currentFrame),526,38,34));
-        if (dz < 0) sprite.setTextureRect(IntRect(36 * int(currentFrame) + 40,526,-38,34));
+        if (dz > 0) sprite.setTextureRect(IntRect(36 * int(currentFrame), 526, 38, 34)); // Кувырок на ходу (Вправо)
+        if (dz < 0) sprite.setTextureRect(IntRect(36 * int(currentFrame) + 40, 526, -38, 34)); // Кувырок на ходу (Влево)
+        if (currentFrame > 5) currentFrame -= 5; // Всего у нас 5 кадров
+        if (gun > 0) sprite.setTextureRect(IntRect(44 * int(currentFrame), 902,45,50)); // Стрельба на ходу (Вправо)
+        if (gun < 0) sprite.setTextureRect(IntRect(44 * int(currentFrame) + 40, 902,-45,50)); // Стрельба на ходу (Влево)
+
 
         sprite.setPosition(rect.left, rect.top); // выводим наш спрайт в позицию x, y
 
-        dx = dz = 0;
+        dx = dz = gun = 0;
     }
 };
 
     int main()
     {
-
+        int tempX = 0;//временная коорд Х.Снимаем ее после нажатия прав клав мыши
+        int tempY = 0;//коорд Y
+        float distance = 0;//это расстояние от объекта до тыка курсора
 
     RenderWindow window(VideoMode(800, 600), "FangGame"); // создаем окно 600 на 600 с именем SFMLworks */
+
     if (window.isOpen())
     {
         std::cout << "Loaded" << std::endl;
@@ -90,12 +100,39 @@ public:
         clock.restart(); // перезагружает часы
         time = time / 800; //здесь происходит регулировка скорости движения персонажа
 
+        Vector2i pixelPos = Mouse::getPosition(window);//забираем коорд курсора
+        Vector2f pos;
+        pos = window.mapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна)
+
+
+        if (pos.x > 400) std::cout << "x > 400" << std::endl;
+        if (pos.y < 300) std::cout << "y > 400" << std::endl;
         Event event;
+
         while (window.pollEvent(event)) {
 
             if (event.type == Event::Closed)
                 window.close(); // обрабатываем событие закрытия окна
+
+            if (event.type == Event::MouseButtonPressed) //если нажата клавиша мыши
+                if (event.key.code == Mouse::Left) {//а именно левая
+                    if (p.sprite.getGlobalBounds().contains(pos.x,
+                                                            pos.y))//и при этом координата курсора попадает в спрайт
+                    {
+                        std::cout << "X:" << pos.x << " Y:" << pos.y << std::endl;
+
+                    }
+                }
+            if (p.isSelect)//если выбрали объект
+                if (event.type == Event::MouseButtonPressed)//если нажата клавиша мыши
+                    if (event.key.code == Mouse::Right) {//а именно правая
+                        // nothing
+                        tempX = pos.x;//забираем координату нажатия курсора Х
+                        tempY = pos.y;//и Y
+                        std::cout << "tempX:" << tempX << " tempY:" << tempY << std::endl;
+                    }
         }
+
         if (Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша нажата и клавиша налево
         {
             p.dx = -0.1; // при нажатии налево- ускоряемся на -0.1
@@ -106,17 +143,15 @@ public:
             p.dx = 0.1; // при нажатии направо- ускоряемся на 0.1
             ground = 500;
         }
-        if (Keyboard::isKeyPressed(Keyboard::Down) &&
-            Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша вправо нажата и клавиша пробел
+        if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша вправо нажата и клавиша пробел
         {
-            p.dz = 0.1;
-            ground = 525;
+                p.dz = 0.1;
+                ground = 525;
         }
-        if (Keyboard::isKeyPressed(Keyboard::Down) &&
-            Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша влево нажата и клавиша пробел
+        if (Keyboard::isKeyPressed(Keyboard::Down) && Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша влево нажата и клавиша пробел
         {
-            p.dz = -0.1;
-            ground = 525;
+                p.dz = -0.1;
+                ground = 525;
         }
         if (Keyboard::isKeyPressed(Keyboard::Up)) // вверх
         {
@@ -124,6 +159,14 @@ public:
                 p.dy = -0.5;
                 p.onGround = false;
             } // если мы на земле, то только тогда можем осуществить прыжок
+            ground = 500;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::RAlt) && Keyboard::isKeyPressed(Keyboard::Right)){
+            p.gun = 0.1;
+            ground = 500;
+        }
+        if (Keyboard::isKeyPressed(Keyboard::RAlt) && Keyboard::isKeyPressed(Keyboard::Left)){
+            p.gun = -0.1;
             ground = 500;
         }
 
