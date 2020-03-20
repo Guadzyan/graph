@@ -96,19 +96,22 @@ public:
         int tempY = 0;//коорд Y
         float distance = 0;//это расстояние от объекта до тыка курсора
 
-    RenderWindow window(VideoMode(800, 600), "FangGame"); // создаем окно 600 на 600 с именем SFMLworks */
+    RenderWindow window(VideoMode(800, 600), "FangGame"); // создаем окно 800 на 600 с именем SFMLworks */
 
     if (window.isOpen())
     {
         std::cout << "Loaded" << std::endl;
     } else{
-        std::cout << "Window error!" << std::endl;
+        std::cout << "Window loading error!" << std::endl;
     }
-                                                                                              Texture t;
+    Texture t;
+    Texture background;
+    background.loadFromFile("/Users/igorbacurin/CLionProjects/graph/images/background.jpg");
     t.loadFromFile("/Users/igorbacurin/CLionProjects/graph/images/fang.png"); // загружаем картинку
     float currentFrame = 0;
 
     PLAYER p(t); // загружаем текстуру
+    PLAYER b(background);
 
 
     Clock clock; /* засекаем время с последнего тика( чтобы привязка персонажа была ко времени, а не к мощности процессора) */
@@ -120,12 +123,12 @@ public:
         clock.restart(); // перезагружает часы
         time = time / 800; //здесь происходит регулировка скорости движения персонажа
 
-        Vector2i pixelPos = Mouse::getPosition(window);//забираем коорд курсора
+        Vector2i pixelPos;
+        pixelPos = Mouse::getPosition(window);//забираем коорд курсора
         Vector2f pos;
         pos = window.mapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна)
 
 
-        //if (pos.y < 300) std::cout << "y > 400" << std::endl;
         Event event;
 
         while (window.pollEvent(event)) {
@@ -199,7 +202,7 @@ public:
             if (pos.x < 400 && pos.y > 300 && pos.y < 500){
                 p.dx_rev = 0.1;
                 ground = 500;
-            } 
+            }
             if (pos.x < 400 && pos.y < 300){
                 p.right_up_rev = 0.1;
                 ground = 500;
@@ -238,6 +241,7 @@ public:
 
 
         window.clear(Color::White); // очищаем экран
+        window.draw(b.sprite);
         window.draw(p.sprite);// рисуем спрайт
         window.display(); // выводим на дисплей
     }
