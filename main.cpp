@@ -199,7 +199,7 @@ public:
             if (pos.x < 400 && pos.y > 300 && pos.y < 500){
                 p.dx_rev = 0.1;
                 ground = 500;
-            }
+            } 
             if (pos.x < 400 && pos.y < 300){
                 p.right_up_rev = 0.1;
                 ground = 500;
