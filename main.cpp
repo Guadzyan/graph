@@ -97,6 +97,7 @@ public:
         float distance = 0;//это расстояние от объекта до тыка курсора
 
     RenderWindow window(VideoMode(800, 600), "FangGame"); // создаем окно 800 на 600 с именем SFMLworks */
+    //RenderWindow Frames(VideoMode(200,100), "Loading");
 
     if (window.isOpen())
     {
@@ -241,7 +242,7 @@ public:
 
 
         window.clear(Color::White); // очищаем экран
-        window.draw(b.sprite);
+        window.draw(b.sprite); // background image
         window.draw(p.sprite);// рисуем спрайт
         window.display(); // выводим на дисплей
     }
