@@ -4,10 +4,11 @@ project(graph)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp)
-add_executable(graph main.cpp)
+add_executable(graph main.cpp src/model/player.h  src/headers/libs.h)
 include_directories(graph cmake-build-debug/fonts)
 include_directories(graph cmake-build-debug/images)
 include_directories(graph libs)
+include_directories(graph)
 FILE(COPY images DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY fonts DESTINATION "${CMAKE_BINARY_DIR}")
 
