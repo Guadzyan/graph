@@ -1,4 +1,4 @@
-![fang game](https://i.imgur.com/CHDefvk.png)
+![fang game](https://i.imgur.com/5GELDPp.png)
 If u wanna resize window:
 Standard Definition - HD (1280x720)
 --> find in main.cpp -> sf::RenderWindow window(sf::VideoMode(**WIGHT**, **HEIGHT**), "Fang Game");
