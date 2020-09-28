@@ -18,6 +18,10 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Fang Game");
     window.setVerticalSyncEnabled(true);
     float WindowSizeY = window.getSize().y;
+    float WindowSizeX = window.getSize().x;
+    float WindowSizeYUpper = WindowSizeY;
+    float WindowSizeYMiddle = WindowSizeY/2;
+    float WindowSizeYDown = WindowSizeY/3;
 
     sf::RectangleShape example_shape(sf::Vector2f(100, 50));
     sf::Event event;
@@ -55,7 +59,7 @@ int main() {
         float ScaleY = (float) WindowSize.y / TextureSize.y;     //Calculate scale.
         background.setTexture(BackgroundTexture);
         background.setScale(ScaleX, ScaleY);      //Set scale.
-        if(!MiddleBackgroundTexture.loadFromFile("images/middle.png"))
+        if(!MiddleBackgroundTexture.loadFromFile("images/borders.png"))
         {
             return -1;
         }
@@ -131,54 +135,54 @@ int main() {
 
         if (Keyboard::isKeyPressed(Keyboard::Left)) // если клавиша нажата и клавиша налево
         {
-            if (pos.x < 400 && pos.y > 500) {
+            if (pos.x < WindowSizeX/2 && pos.y > 500) {
                 p.right_down = -0.1; // при нажатии направо- ускоряемся на 0.
                 ground = scaling_ground;
             }
-            if (pos.x < 400 && pos.y > 300 && pos.y < 500) {
+            if (pos.x < WindowSizeX/2 && pos.y > 300 && pos.y < 500) {
                 p.dx = -0.1;
                 ground = scaling_ground;
             }
-            if (pos.x < 400 && pos.y < 300) {
+            if (pos.x < WindowSizeX/2 && pos.y < 300) {
                 p.right_up = -0.1;
                 ground = scaling_ground;
             }
-            if (pos.x > 400 && pos.y > 500) {
+            if (pos.x > WindowSizeX/2 && pos.y > 500) {
                 p.right_down_rev = -0.1; // при нажатии направо- ускоряемся на 0.
                 ground = scaling_ground;
             }
-            if (pos.x > 400 && pos.y > 300 && pos.y < 500) {
+            if (pos.x > WindowSizeX/2 && pos.y > 300 && pos.y < 500) {
                 p.dx_rev = -0.1;
                 ground = scaling_ground;
             }
-            if (pos.x > 400 && pos.y < 300) {
+            if (pos.x > WindowSizeX/2 && pos.y < 300) {
                 p.right_up_rev = -0.1;
                 ground = scaling_ground;
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) // если клавиша нажата и клавиша направо
         {
-            if (pos.x > 400 && pos.y > 500) {
+            if (pos.x > WindowSizeX/2 && pos.y > 500) {
                 p.right_down = 0.1; // при нажатии направо- ускоряемся на 0.1
                 ground = scaling_ground;
             }
-            if (pos.x > 400 && pos.y > 300 && pos.y < 500) {
+            if (pos.x > WindowSizeX/2 && pos.y > 300 && pos.y < 500) {
                 p.dx = 0.1;
                 ground = scaling_ground;
             }
-            if (pos.x > 400 && pos.y < 300) {
+            if (pos.x > WindowSizeX/2 && pos.y < 300) {
                 p.right_up = 0.1;
                 ground = scaling_ground;
             }
-            if (pos.x < 400 && pos.y > 500) {
+            if (pos.x < WindowSizeX/2 && pos.y > 500) {
                 p.right_down_rev = 0.1; // при нажатии направо- ускоряемся на 0.1
                 ground = scaling_ground;
             }
-            if (pos.x < 400 && pos.y > 300 && pos.y < 500) {
+            if (pos.x < WindowSizeX/2 && pos.y > 300 && pos.y < 500) {
                 p.dx_rev = 0.1;
                 ground = scaling_ground;
             }
-            if (pos.x < 400 && pos.y < 300) {
+            if (pos.x < WindowSizeX/2 && pos.y < 300) {
                 p.right_up_rev = 0.1;
                 ground = scaling_ground;
             }
