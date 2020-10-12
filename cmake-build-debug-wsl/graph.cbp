@@ -48,6 +48,8 @@
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/fonts"/>
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/images"/>
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/libs"/>
+					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/server/hdr"/>
+					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/server/src"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -74,6 +76,8 @@
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/fonts"/>
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/images"/>
 					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/libs"/>
+					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/server/hdr"/>
+					<Add directory="/mnt/c/Users/Admin/CLionProjects/graph/server/src"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>

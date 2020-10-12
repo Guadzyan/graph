@@ -9,6 +9,8 @@ include_directories(graph cmake-build-debug/fonts)
 include_directories(graph cmake-build-debug/images)
 include_directories(graph libs)
 include_directories(graph)
+include_directories(graph server/hdr)
+include_directories(graph server/src)
 FILE(COPY images DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY fonts DESTINATION "${CMAKE_BINARY_DIR}")
 

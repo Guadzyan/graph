@@ -16,6 +16,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../cmake-build-debug/fonts"
   "../cmake-build-debug/images"
   "../libs"
+  "../server/hdr"
+  "../server/src"
   )
 
 # Targets to which this target links.

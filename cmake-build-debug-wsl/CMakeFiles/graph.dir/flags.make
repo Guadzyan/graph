@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Users/Admin/CLionProjects/graph/graph -I/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/fonts -I/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/images -I/mnt/c/Users/Admin/CLionProjects/graph/libs 
+CXX_INCLUDES = -I/mnt/c/Users/Admin/CLionProjects/graph/graph -I/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/fonts -I/mnt/c/Users/Admin/CLionProjects/graph/cmake-build-debug/images -I/mnt/c/Users/Admin/CLionProjects/graph/libs -I/mnt/c/Users/Admin/CLionProjects/graph/server/hdr -I/mnt/c/Users/Admin/CLionProjects/graph/server/src 
 

@@ -2,3 +2,5 @@
 /cmake-build-debug/
 /images/background.psd
 /images/fang.psd
+/cmake-build-debug-wsl/
+/.idea/

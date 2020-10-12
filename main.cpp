@@ -10,7 +10,15 @@ std::string getHostStr(const TcpServer::Client& client) {
            std::to_string(int(reinterpret_cast<char*>(&ip)[1])) + '.' +
            std::to_string(int(reinterpret_cast<char*>(&ip)[2])) + '.' +
            std::to_string(int(reinterpret_cast<char*>(&ip)[3])) + ':' +
-           std::to_string( client.getPort ());}
+           std::to_string( client.getPort ());
+}
+std::string getHostStr(uint32_t ip, uint16_t port) {
+    return std::string() + std::to_string(int(reinterpret_cast<char*>(&ip)[0])) + '.' +
+           std::to_string(int(reinterpret_cast<char*>(&ip)[1])) + '.' +
+           std::to_string(int(reinterpret_cast<char*>(&ip)[2])) + '.' +
+           std::to_string(int(reinterpret_cast<char*>(&ip)[3])) + ':' +
+           std::to_string( port );
+}
 
 int main() {
     TcpServer::Client* wait_client = nullptr;
