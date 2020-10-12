@@ -150,6 +150,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+server/src/TcpClient.o: server/src/TcpClient.cpp.o
+
+.PHONY : server/src/TcpClient.o
+
+# target to build an object file
+server/src/TcpClient.cpp.o:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpClient.cpp.o
+.PHONY : server/src/TcpClient.cpp.o
+
+server/src/TcpClient.i: server/src/TcpClient.cpp.i
+
+.PHONY : server/src/TcpClient.i
+
+# target to preprocess a source file
+server/src/TcpClient.cpp.i:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpClient.cpp.i
+.PHONY : server/src/TcpClient.cpp.i
+
+server/src/TcpClient.s: server/src/TcpClient.cpp.s
+
+.PHONY : server/src/TcpClient.s
+
+# target to generate assembly for a file
+server/src/TcpClient.cpp.s:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpClient.cpp.s
+.PHONY : server/src/TcpClient.cpp.s
+
+server/src/TcpServer.o: server/src/TcpServer.cpp.o
+
+.PHONY : server/src/TcpServer.o
+
+# target to build an object file
+server/src/TcpServer.cpp.o:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpServer.cpp.o
+.PHONY : server/src/TcpServer.cpp.o
+
+server/src/TcpServer.i: server/src/TcpServer.cpp.i
+
+.PHONY : server/src/TcpServer.i
+
+# target to preprocess a source file
+server/src/TcpServer.cpp.i:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpServer.cpp.i
+.PHONY : server/src/TcpServer.cpp.i
+
+server/src/TcpServer.s: server/src/TcpServer.cpp.s
+
+.PHONY : server/src/TcpServer.s
+
+# target to generate assembly for a file
+server/src/TcpServer.cpp.s:
+	$(MAKE) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/server/src/TcpServer.cpp.s
+.PHONY : server/src/TcpServer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +216,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... server/src/TcpClient.o"
+	@echo "... server/src/TcpClient.i"
+	@echo "... server/src/TcpClient.s"
+	@echo "... server/src/TcpServer.o"
+	@echo "... server/src/TcpServer.i"
+	@echo "... server/src/TcpServer.s"
 .PHONY : help
 
 

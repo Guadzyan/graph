@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++11 -g  -rdynamic CMakeFiles/graph.dir/main.cpp.o  -o graph  -lsfml-system -lsfml-window -lsfml-graphics -lsfml-network -lsfml-audio 
+/usr/bin/c++   -std=c++11 -g  -rdynamic CMakeFiles/graph.dir/main.cpp.o CMakeFiles/graph.dir/server/src/TcpServer.cpp.o CMakeFiles/graph.dir/server/src/TcpClient.cpp.o  -o graph  -lsfml-system -lsfml-window -lsfml-graphics -lsfml-network -lsfml-audio 

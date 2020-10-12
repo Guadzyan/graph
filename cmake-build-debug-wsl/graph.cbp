@@ -93,6 +93,18 @@
 		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/main.cpp">
 			<Option target="graph"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/server/hdr/TcpClient.h">
+			<Option target="graph"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/server/hdr/TcpServer.h">
+			<Option target="graph"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/server/src/TcpClient.cpp">
+			<Option target="graph"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/server/src/TcpServer.cpp">
+			<Option target="graph"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/Admin/CLionProjects/graph/src/headers/libs.h">
 			<Option target="graph"/>
 		</Unit>

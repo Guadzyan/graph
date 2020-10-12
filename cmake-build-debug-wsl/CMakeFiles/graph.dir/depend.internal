@@ -3,5 +3,13 @@
 
 CMakeFiles/graph.dir/main.cpp.o
  /mnt/c/Users/Admin/CLionProjects/graph/main.cpp
+ /mnt/c/Users/Admin/CLionProjects/graph/server/hdr/TcpServer.h
+ /mnt/c/Users/Admin/CLionProjects/graph/server/src/TcpServer.cpp
  /mnt/c/Users/Admin/CLionProjects/graph/src/headers/libs.h
  /mnt/c/Users/Admin/CLionProjects/graph/src/model/player.h
+CMakeFiles/graph.dir/server/src/TcpClient.cpp.o
+ /mnt/c/Users/Admin/CLionProjects/graph/server/hdr/TcpClient.h
+ /mnt/c/Users/Admin/CLionProjects/graph/server/src/TcpClient.cpp
+CMakeFiles/graph.dir/server/src/TcpServer.cpp.o
+ /mnt/c/Users/Admin/CLionProjects/graph/server/hdr/TcpServer.h
+ /mnt/c/Users/Admin/CLionProjects/graph/server/src/TcpServer.cpp

@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/graph.dir/main.cpp.o"
+  "CMakeFiles/graph.dir/server/src/TcpClient.cpp.o"
+  "CMakeFiles/graph.dir/server/src/TcpServer.cpp.o"
   "graph"
   "graph.pdb"
 )
