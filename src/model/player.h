@@ -28,13 +28,6 @@ public:
     }
 
     void update(float time, float player_scale_x, float player_scale_y) {
-        xPos = sprite.getPosition().x;
-        yPos = sprite.getPosition().y;
-        if (xPos < 0)
-        {
-            xPos = 0;
-            sprite.setPosition(xPos,yPos);
-        }
         rect.left += dx * time; // rect.left-есть координата х, перемещаем ее на dx*time
         rect.left += dz * time; // dz переменная
         rect.left += gun * time; // ходьба с оружием
@@ -87,7 +80,11 @@ public:
         if (gun < 0)sprite.setTextureRect(IntRect(704 * int(currentFrame) + 64, 704, -64, 64)); // Стрельба на ходу (Влево)
         std::cout << currentFrame << std::endl;
 
-
+        if (rect.left < 0)
+        {
+            rect.left = 0;
+        }
+        if (rect.left > this->window.getSize().y)
         sprite.setPosition(rect.left, rect.top); // выводим наш спрайт в позицию x, y
         sprite.setScale(player_scale_x, player_scale_y);
 
